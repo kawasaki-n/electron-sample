@@ -2,6 +2,8 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
+  "main": "build/electron/electron.js",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
@@ -20,24 +22,25 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "electron:dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\""
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 electron version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 electron version"
     ]
   },
   "devDependencies": {
     "@craco/craco": "^6.4.3",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^19.0.8",
+    "electron-builder": "^23.1.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -47,6 +50,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "wait-on": "^6.0.1"
   }
 }
